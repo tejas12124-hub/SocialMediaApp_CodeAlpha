@@ -1,1 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mini Social Media</title>
 
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#f2f2f2;
+}
+
+header{
+    background:linear-gradient(90deg,#6a11cb,#2575fc);
+    color:white;
+    padding:15px;
+    text-align:center;
+    font-size:22px;
+    font-weight:bold;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.container{
+    display:flex;
+    padding:20px;
+    gap:20px;
+}
+
+.posts{
+    flex:2;
+}
+
+.create-post{
+    flex:1;
+    background:white;
+    padding:15px;
+    border-radius:8px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.1);
+}
+
+.post{
+    background:white;
+    margin-bottom:20px;
+    padding:15px;
+    border-radius:8px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.1);
+}
+
+.post img{
+    width:100%;
+    border-radius:8px;
+    margin:10px 0;
+}
+
+button{
+    padding:8px 12px;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+    background:#6a11cb;
+    color:white;
+    margin-top:5px;
+}
+
+button:hover{
+    opacity:0.8;
+}
+
+input, textarea{
+    width:100%;
+    padding:8px;
+    margin:8px 0;
+    border-radius:5px;
+    border:1px solid #ccc;
+}
+
+.comment-section{
+    margin-top:10px;
+}
+
+.dark{
+    background:#1e1e1e;
+    color:white;
+}
+
+.dark .post,
+.dark .create-post{
+    background:#2c2c2c;
+    color:white;
+}
+.search{
+    margin:10px;
+    padding:8px;
+    width:50%;
+    border-radius:5px;
+    border:1px solid #ccc;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    Mini Social
+    <button onclick="toggleDark()">🌙</button>
+</header>
+
+<center>
+<input type="text" id="searchInput" class="search" placeholder="Search by author..." onkeyup="searchAuthor()">
+</center>
+
+<div class="container">
+
+<div class="posts" id="posts">
+
+    <!-- Default Post -->
+
+
+
+  <div class="post" data-author="Sravanthi Komanduri">
+        <h3> AI Summit Delhi 🇮🇳✨</h3>
+        <p>     Hon’ble PM Narendra Modi uniting with global business leaders to shape India’s AI-powered future 🤝🚀
+     #AISummitDelhi   #DelhiAISummit  #ArtificialIntelligence  #AIIndia #DigitalIndia #TechLeadership
+           #InnovationIndia #FutureOfAI #AIRevolution #StartupIndia #TechSummit2026 #GlobalAI
+           #BusinessLeaders #PMModi #NewIndia   </p>
+        
+        <img src="https://images.indianexpress.com/2026/02/AI-Summit-PM-Narendra-Modi-and-other-delegates-attend-the-CEO-Roundtable-at-the-India-AI-Impact-Summit.jpg?w=1600" alt="post image">
+        <button onclick="likePost(this)">❤️ Like (<span>0</span>)</button>
+
+        <div class="comment-section">
+            <input type="text" placeholder="Write a comment">
+            <button onclick="addComment(this)">Comment</button>
+            <div class="comments"></div>
+            <button onclick="Share(this)">Share</button>
+            <div class="Share"></div>
+        </div>
+    </div>
+
+
+     <div class="post" data-author="Sravanthi Komanduri">
+        <h3>Code the future. Train your mind. Rewrite your destiny. 🤖✨</h3>
+        <p>In the AI era, don’t compete with machines — command them. 🚀
+Learn AI today, lead tomorrow. 💡🔥
+
+#AIRevolution #LearnAI #FutureReady #GenAI #TechMindset #DigitalIndia #AIForAll #InnovateYourLife #NextGenSkills #CareerUpgrade</p>
+        <img src="https://img.freepik.com/free-vector/artificial-intelligence-instagram-post_23-2150360365.jpg" alt="post image">
+        <button onclick="likePost(this)">❤️ Like (<span>0</span>)</button>
+
+        <div class="comment-section">
+            <input type="text" placeholder="Write a comment">
+        <button onclick="addComment(this)">Comment</button>
+            <div class="comments"></div>
+            <button onclick="Share(this)">Share</button>
+            <div class="Share"></div>
+        </div>
+    </div>
+         
+
+    
+    <div class="post" data-author="Sravanthi Komanduri">
+        <h3>🚀 Artificial Intelligence in Today’s World 🌍 </h3>
+        <p> Artificial Intelligence is not the future anymore — it’s the power shaping our present, from smart assistants to life-saving innovations.
+         In a world driven by data, AI is the new electricity fueling dreams, careers, and billion-dollar ideas. ⚡🤖
+         
+         #AI #GenerativeAI  #DataScience #FutureTech  #TechInnovation  #AIRevolution 
+</p>
+        <img src="https://tse1.mm.bing.net/th/id/OIP.dsoOAX1HrO3FZz4G_LKcKgHaE7?rs=1&pid=ImgDetMain&o=7&rm=3" alt="post image">
+        <button onclick="likePost(this)">❤️ Like (<span>0</span>)</button>
+
+        <div class="comment-section">
+            <input type="text" placeholder="Write a comment">
+            <button onclick="addComment(this)">Comment</button>
+            <div class="comments"></div>
+            <button onclick="Share(this)">Share</button>
+            <div class="Share"></div>
+        </div>
+    </div>
+      
+      
+      <div class="post" data-author="Sravanthi Komanduri">
+        <h3> Data is Gold </h3>
+        <p> Data is the new oil 
+            AI is the refinery turning it into Power!
+       #DigitalEra  #DataScience #DataMindset  #DataAnalytics  #FutureTech  #TechInnovation   
+</p>
+        <img src="https://andyhtu.com/wp-content/uploads/2024/02/Your-Art-Data-is-Gold_Phone-with-Gold-Nuggets.jpg" alt="post image">
+        <button onclick="likePost(this)">❤️ Like (<span>0</span>)</button>
+
+        <div class="comment-section">
+            <input type="text" placeholder="Write a comment">
+            <button onclick="addComment(this)">Comment</button>
+            <div class="comments"></div>
+            <button onclick="Share(this)">Share</button>
+            <div class="Share"></div>
+        </div>
+    </div>
+      
+
+
+     <div class="post" data-author="Sravanthi Komanduri">
+        <h3>Using AI Tools like a Pro! </h3>
+        <p>   AI Is My Intern Now
+            Works 24/7 without coffee breaks.
+              Never asks for salary.
+             Never says “I’ll do it tomorrow.”
+             Honestly… best hire of the year. 🤖✨
+             #AIIntern #AIAutomation #WorkSmart #FutureOfWork #DigitalMindset
+#TechSavv #ProductivityHacks #SmartWork #AIGeneration #EntrepreneurMindset
+#LearnAI #InnovationDaily #PromptEngineering  #NextGenWork
+</p>
+        
+        <img src="https://media.istockphoto.com/id/2215718144/photo/meta-ai-claude-chatgpt-gemini-grok-perplexity-deepseek-copilot-and-character-ai-assorted-ai.jpg?s=170667a&w=0&k=20&c=KNBeprNSSyvP8A-pvD3Z19NWB2Jk-dQYdtTwMseShwk=" alt="post image">
+        <button onclick="likePost(this)">❤️ Like (<span>0</span>)</button>
+
+        <div class="comment-section">
+            <input type="text" placeholder="Write a comment">
+            <button onclick="addComment(this)">Comment</button>
+            <div class="comments"></div>
+            <button onclick="Share(this)">Share</button>
+            <div class="Share"></div>
+        </div>
+    </div>
+
+</div>
+
+<div class="create-post">
+    <h3>Create New Post</h3>
+    <input type="text" id="author" placeholder="Your Name">
+    <textarea id="caption" placeholder="Write caption"></textarea>
+    <input type="file" id="imageInput">
+    <button onclick="createPost()">Post</button>
+</div>
+
+</div>
+
+<script>
+
+function createPost(){
+    let author = document.getElementById("author").value;
+    let caption = document.getElementById("caption").value;
+    let imageInput = document.getElementById("imageInput");
+    let file = imageInput.files[0];
+
+    if(author === "" || caption === "" || !file){
+        alert("Please fill all fields!");
+        return;
+    }
+
+    let reader = new FileReader();
+    reader.onload = function(e){
+
+        let post = document.createElement("div");
+        post.className = "post";
+        post.setAttribute("data-author", author);
+
+        post.innerHTML = `
+            <h3>${author}</h3>
+            <p>${caption}</p>
+            <img src="${e.target.result}">
+            <button onclick="likePost(this)">❤️ Like (<span>0</span>)</button>
+            <div class="comment-section">
+                <input type="text" placeholder="Write a comment">
+                <button onclick="addComment(this)">Comment</button>
+                <div class="comments"></div>
+            </div>
+        `;
+
+        document.getElementById("posts").prepend(post);
+
+        document.getElementById("author").value="";
+        document.getElementById("caption").value="";
+        imageInput.value="";
+    }
+
+    reader.readAsDataURL(file);
+}
+
+function likePost(btn){
+    let count = btn.querySelector("span");
+    count.innerText = parseInt(count.innerText) + 1;
+}
+
+function addComment(btn){
+    let commentInput = btn.previousElementSibling;
+    let commentText = commentInput.value;
+
+    if(commentText === "") return;
+
+    let commentDiv = document.createElement("p");
+    commentDiv.innerText = commentText;
+
+    btn.nextElementSibling.appendChild(commentDiv);
+    commentInput.value="";
+}
+
+function toggleDark(){
+    document.body.classList.toggle("dark");
+}
+
+function searchAuthor(){
+    let input = document.getElementById("searchInput").value.toLowerCase();
+    let posts = document.querySelectorAll(".post");
+
+    posts.forEach(post=>{
+        let author = post.getAttribute("data-author").toLowerCase();
+        if(author.includes(input)){
+            post.style.display="block";
+        } else {
+            post.style.display="none";
+        }
+    });
+}
+
+</script>
+
+</body>
+</html>
